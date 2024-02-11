@@ -1,9 +1,12 @@
+import { useSelector } from "react-redux";
 import Header from "./Header";
 import InputForm from "./InputForm";
 import SingleBook from "./SingleBook";
 
 
 const HomePage = () => {
+    const books = useSelector(state=> state)
+    console.log(books)
     return (
         <div>
        <Header/>
@@ -19,7 +22,8 @@ const HomePage = () => {
               </div>
               <div className="lws-bookContainer">
                 {/* Card 1 */}
-                <SingleBook/>
+                {books.map(book=> <SingleBook key={book.id} book={book}/>)}
+                
               </div>
             </div>
           {/* Input Form */}

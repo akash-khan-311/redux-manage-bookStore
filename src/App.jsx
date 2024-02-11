@@ -1,16 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import HomePage from './components/HomePage'
-import './style.css'
+import { Provider } from "react-redux";
+import HomePage from "./components/HomePage";
+import "./style.css";
+import store from "./redux/store";
 
 function App() {
-  
-
   return (
-    <>
-    <HomePage/>
-    </>
-  )
+    <Provider store={store}>
+      <HomePage />
+    </Provider>
+  );
 }
 
-export default App
+export default App;
