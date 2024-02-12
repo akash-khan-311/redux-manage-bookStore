@@ -26,6 +26,24 @@
       "rating": 5,
       "featured": true,
       "id": 5
+    },
+    {
+      "name": "বেলা ফুরাবার আগে ",
+      "author": "আরিফ আজাদ ",
+      "thumbnail": "https://wafilife-media.wafilife.com/uploads/2020/01/Bela-Furabar-Agey-Front.png",
+      "price": 250,
+      "rating": 4,
+      "featured": true,
+      "id": 6
+    },
+    {
+      "name": "এবার ভিন্ন কিছু হোক",
+      "author": "আরিফ আজাদ ",
+      "thumbnail": "https://wafilife-media.wafilife.com/uploads/2022/02/273937881_4445617688876826_6666656559578231532_n-e1644896553767.jpg",
+      "price": 189,
+      "rating": 5,
+      "featured": true,
+      "id": 7
     }
   ]
 }

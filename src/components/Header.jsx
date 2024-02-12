@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import logo from '../assets/images/logo.png'
 
 
 const Header = ({setSearchText}) => {
@@ -22,8 +23,8 @@ const Header = ({setSearchText}) => {
       <nav className="py-4 2xl:px-6">
         <div className="container flex items-center justify-between">
           <img
-            src="/images/logo.svg"
-            width="150px"
+            src={logo}
+            width="70px"
             className="object-contain"
             alt="logo"
           />
