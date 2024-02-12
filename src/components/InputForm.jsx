@@ -76,6 +76,7 @@ const InputForm = ({ isUpdate, setIsUpdate }) => {
               type="text"
               id="input-Bookname"
               name="name"
+              value={input.name}
             />
           </div>
           <div className="space-y-2">
@@ -87,6 +88,7 @@ const InputForm = ({ isUpdate, setIsUpdate }) => {
               type="text"
               id="input-Bookauthor"
               name="author"
+              value={input.author}
             />
           </div>
           <div className="space-y-2">
@@ -98,6 +100,7 @@ const InputForm = ({ isUpdate, setIsUpdate }) => {
               type="text"
               id="input-Bookthumbnail"
               name="thumbnail"
+              value={input.thumbnail}
             />
           </div>
           <div className="grid grid-cols-2 gap-8 pb-4">
@@ -110,6 +113,7 @@ const InputForm = ({ isUpdate, setIsUpdate }) => {
                 type="number"
                 id="input-Bookprice"
                 name="price"
+                value={input.price}
               />
             </div>
             <div className="space-y-2">
@@ -123,6 +127,7 @@ const InputForm = ({ isUpdate, setIsUpdate }) => {
                 name="rating"
                 min={1}
                 max={5}
+                value={input.rating}
               />
             </div>
           </div>
@@ -133,6 +138,7 @@ const InputForm = ({ isUpdate, setIsUpdate }) => {
               type="checkbox"
               name="featured"
               className="w-4 h-4"
+              value={input.featured}
             />
             <label htmlFor="featured" className="ml-2 text-sm">
               This is a featured book

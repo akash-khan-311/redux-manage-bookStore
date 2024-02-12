@@ -3,9 +3,18 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { Rating } from "@material-tailwind/react";
+import { useDispatch } from "react-redux";
+import deleteBook from "../redux/Thunk/deleteBook";
 
-const SingleBook = ({ book }) => {
+const SingleBook = ({ book, setIsUpdate }) => {
+  const dispatch = useDispatch();
   const { name, author, id, price, rating, thumbnail, featured } = book;
+
+  const deleteHandler = () => {
+    dispatch(deleteBook(id));
+  };
+
+  console.log(book)
 
   return (
     <>
@@ -21,7 +30,7 @@ const SingleBook = ({ book }) => {
               {featured && "Feature"}
             </span>
             <div className="text-gray-500 space-x-2">
-              <button className="lws-edit">
+              <button onClick={() => setIsUpdate(book)} className="lws-edit">
                 <svg
                   fill="none"
                   viewBox="0 0 24 24"
@@ -36,7 +45,8 @@ const SingleBook = ({ book }) => {
                   />
                 </svg>
               </button>
-              <button className="lws-delete">
+              {/* Delete Button */}
+              <button onClick={deleteHandler} className="lws-delete">
                 <svg
                   fill="none"
                   viewBox="0 0 24 24"
