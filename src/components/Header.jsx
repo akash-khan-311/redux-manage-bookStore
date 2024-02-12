@@ -1,6 +1,22 @@
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 
 
-const Header = () => {
+const Header = ({setSearchText}) => {
+  const [inputValue,setInputValue] = useState('')
+
+  useEffect(()=> {
+    const timer = setTimeout(()=> {
+      setSearchText(inputValue)
+    }, 500)
+    return ()=> {
+      clearTimeout(timer)
+    }
+  },[inputValue,setSearchText])
+
+  const handleInutChange = e=> {
+    setInputValue(e.target.value)
+  }
   return (
     <>
       <nav className="py-4 2xl:px-6">
@@ -34,7 +50,7 @@ const Header = () => {
                 type="text"
                 placeholder="Filter books..."
                 
-                
+                onChange={handleInutChange}
                 className="search"
                 id="lws-searchBook"
               />

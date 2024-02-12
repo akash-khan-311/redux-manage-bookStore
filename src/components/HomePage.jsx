@@ -47,14 +47,14 @@ const HomePage = () => {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setFilterFeatured(false)}
-                  className="filter-btn active-filter"
+                  className={`filter-btn duration-500 ${!filterFeatured && 'active-filter'}`}
                   id="lws-filterAll"
                 >
                   All
                 </button>
                 <button
                   onClick={() => setFilterFeatured(true)}
-                  className="filter-btn"
+                  className={`filter-btn duration-500 ${filterFeatured && 'active-filter'}`}
                   id="lws-filterFeatured"
                 >
                   Featured
