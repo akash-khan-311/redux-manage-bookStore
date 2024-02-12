@@ -1,19 +1,33 @@
-// import { useState } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 
-const InputForm = () => {
-    // const [input,setInput] = useState({
-    //     name: '',
-    //     author:'',
-    //     thumbnail:'',
-    //     price:'',
-    //     rating: '',
-    //     featured: false
-    // })
+
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+const InputForm = ({isUpdate , setIsUpdate}) => {
+  const dispatch = useDispatch();
+    const [input,setInput] = useState({
+        name: '',
+        author:'',
+        thumbnail:'',
+        price:'',
+        rating: '',
+        featured: false
+    })
+
+    useEffect(()=> {
+      if(isUpdate){
+        setInput(isUpdate)
+      }
+    },[isUpdate])
 
     const submitHandler = e=> {
         e.preventDefault();
 
-     
+     if(isUpdate){
+      dispatch()
+     }
     }
   return (
     <div>
