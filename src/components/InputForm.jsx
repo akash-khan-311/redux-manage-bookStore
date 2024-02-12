@@ -1,34 +1,67 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import updateBookThunk from "../redux/Thunk/updateBookThunk";
+import addBookThunk from "../redux/Thunk/AddBook";
 
-const InputForm = ({isUpdate , setIsUpdate}) => {
+const InputForm = ({ isUpdate, setIsUpdate }) => {
   const dispatch = useDispatch();
-    const [input,setInput] = useState({
-        name: '',
-        author:'',
-        thumbnail:'',
-        price:'',
-        rating: '',
-        featured: false
-    })
+  const [input, setInput] = useState({
+    name: "",
+    author: "",
+    thumbnail: "",
+    price: "",
+    rating: "",
+    featured: false,
+  });
 
-    useEffect(()=> {
-      if(isUpdate){
-        setInput(isUpdate)
-      }
-    },[isUpdate])
-
-    const submitHandler = e=> {
-        e.preventDefault();
-
-     if(isUpdate){
-      dispatch()
-     }
+  useEffect(() => {
+    if (isUpdate) {
+      setInput(isUpdate);
     }
+  }, [isUpdate]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    if (isUpdate) {
+      dispatch(updateBookThunk(input));
+      setIsUpdate(false);
+    } else {
+      dispatch(addBookThunk(input));
+    }
+
+    //  Form Reset
+    setInput({
+      name: "",
+      author: "",
+      thumbnail: "",
+      price: "",
+      rating: "",
+      featured: false,
+    });
+  };
+
+  const inputHandler = (fieldName, e) => {
+    switch (fieldName) {
+      case "price":
+        setInput({ ...input, [fieldName]: Number(e.target.value) });
+        break;
+      case "rating":
+        setInput({ ...input, [fieldName]: Number(e.target.value) });
+        break;
+      case "featured":
+        setInput((prev) => {
+          return { ...input, [fieldName]: !prev.featured };
+        });
+        break;
+
+      default:
+        setInput({ ...input, [fieldName]: e.target.value });
+    }
+  };
   return (
     <div>
       <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
@@ -37,6 +70,7 @@ const InputForm = ({isUpdate , setIsUpdate}) => {
           <div className="space-y-2">
             <label htmlFor="name">Book Name</label>
             <input
+              onChange={(e) => inputHandler("name", e)}
               required
               className="text-input"
               type="text"
@@ -47,6 +81,7 @@ const InputForm = ({isUpdate , setIsUpdate}) => {
           <div className="space-y-2">
             <label htmlFor="category">Author</label>
             <input
+              onChange={(e) => inputHandler("author", e)}
               required
               className="text-input"
               type="text"
@@ -57,6 +92,7 @@ const InputForm = ({isUpdate , setIsUpdate}) => {
           <div className="space-y-2">
             <label htmlFor="image">Image Url</label>
             <input
+              onChange={(e) => inputHandler("thumbnail", e)}
               required
               className="text-input"
               type="text"
@@ -69,6 +105,7 @@ const InputForm = ({isUpdate , setIsUpdate}) => {
               <label htmlFor="price">Price</label>
               <input
                 required
+                onChange={(e) => inputHandler("price", e)}
                 className="text-input"
                 type="number"
                 id="input-Bookprice"
@@ -78,6 +115,7 @@ const InputForm = ({isUpdate , setIsUpdate}) => {
             <div className="space-y-2">
               <label htmlFor="quantity">Rating</label>
               <input
+                onChange={(e) => inputHandler("rating", e)}
                 required
                 className="text-input"
                 type="number"
@@ -90,18 +128,18 @@ const InputForm = ({isUpdate , setIsUpdate}) => {
           </div>
           <div className="flex items-center">
             <input
+              onChange={(e) => inputHandler("featured", e)}
               id="input-Bookfeatured"
               type="checkbox"
               name="featured"
               className="w-4 h-4"
             />
             <label htmlFor="featured" className="ml-2 text-sm">
-              {" "}
-              This is a featured book{" "}
+              This is a featured book
             </label>
           </div>
           <button type="submit" className="submit" id="submit">
-            Add Book
+            {isUpdate ? "Update Book" : " Add Book"}
           </button>
         </form>
       </div>

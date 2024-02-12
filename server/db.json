@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "name": "হায়াতের দিন ফুরালে ",
+      "author": "আরিফ আজাদ ",
+      "thumbnail": "https://wafilife-media.wafilife.com/uploads/2024/01/hayater-din-furole-250x375.jpg",
+      "price": 223,
+      "rating": 5,
+      "featured": false,
+      "id": 5
     }
   ]
 }
